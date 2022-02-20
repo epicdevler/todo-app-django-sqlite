@@ -1,11 +1,9 @@
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     text-decoration: none;
 }
 body{
-    background: linear-gradient(60deg, orange, orangered);
+    background: red;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,15 +16,7 @@ main{
 .inputContent{
     display: flex;
 }
-input{
-    width: 100%;
-    padding: 10px;
-    border: 0;
-}
-a, button{
-    padding: 10px;
-    border: 0;
-}   
+
 .extraBtns{
     margin-top: 24px;
     display: flex;
@@ -34,26 +24,16 @@ a, button{
 }
 .extraBtns a:last-child{
     margin-left: 3px;
-    width: 20%;
 }
 .inputContent button{
     width: 20%
 }
+.bg-default{
+background: #2793da !important;
+}
 
 /* TABLE STYLING */
-table{
-    border-collapse: collapse;
-    margin-top: 24px;
-}
-table, td, th{
-    border: 1px solid #fafafa;
-}
-td, th{
-    padding: 16px;
-}
-text-center{
-    text-align: center !important;
-}
+
 
 .completed{
     background: rgba(11, 172, 11, 0.322);

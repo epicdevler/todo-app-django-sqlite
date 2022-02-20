@@ -9,7 +9,9 @@ def index(request):
     
     todo_items = TodoList.objects.order_by('id')
     input = TodoListForm()
-    context = {'todo_items' : todo_items, 'input': input}
+    _len = len(todo_items)
+
+    context = {'todo_items' : todo_items, 'input': input, 'range':range(_len)}
     return render(request, 'todolist/index.html', context)
 
 @require_POST

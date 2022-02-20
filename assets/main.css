@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body{
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+main{
+    margin-top: 50px;
+}
+
+/* INPUT AND BUTTON STYLING */
+
+.extraBtns{
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-end;
+}
+.extraBtns a:last-child{
+    margin-left: 3px;
+}
+.inputContent button{
+    width: 20%
+}
+.bg-default{
+background: #2793da !important;
+}
+
+/* TABLE STYLING */
+
+.hover:hover{
+    background: gray;
+}
+
+
+.completed{
+    background: rgba(11, 172, 11, 0.322);
+    color: white
+}
+.cancelled{
+    background: rgba(255, 23, 23, 0.322);
+    color: white;
+}
