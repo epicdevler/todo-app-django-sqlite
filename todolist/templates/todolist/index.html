@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'todolist/main.css' %}" />
+    <title>TODO APP</title>
+  </head>
+  <body>
+    <main>
+      <form action="{% url 'addTodo' %}" role="form" method="post">
+        {% csrf_token %}
+        <div class="inputContent">
+          {{ input.text }}
+          <button type="submit">Add</button>
+        </div>
+        <div class="extraBtns">
+          <a href="{% url 'deleteCompleted' %}">Delete Completed</a>
+          <a href="{% url 'deleteAll' %}">Delete All</a>
+        </div>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>S/N</th>
+            <th>Task</th>
+            <th class="text-center">Done</th>
+            <th class="text-center">Cancelled</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for todo_item in todo_items %} 
+          <tr class="{% if todo_item.completed %} completed {% endif %}">
+            <td></td>
+            <td>
+              <a href="{% url 'markCompleted' todo_item.id %}">
+                {{todo_item.text}}
+              </a>
+            </td>
+            <td>{{todo_item.completed}}</td>
+            <td>{{todo_item.cancelled}}</td>
+          </tr>      
+          {% endfor %}
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>
