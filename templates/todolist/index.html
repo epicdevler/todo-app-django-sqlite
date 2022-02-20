@@ -23,7 +23,9 @@
             </div>
             <div class="extraBtns">
                 <a href="{% url 'deleteCompleted' %}" class="btn border">Delete Completed</a>
-                <a href="{% url 'deleteAll' %}" class="btn border bg-danger text-light">Delete All</a>
+                <a href="{% url 'deleteCancelled' %}" class="btn border ms-1">Delete Cancelled</a>
+                <a href="{% url 'deleteAll' %}" class="btn border bg-danger text-light ms-1">Delete All</a>
+                <a href="{% url 'clearStatus' %}" class="btn border">Clear Status</a>
             </div>
         </form>
     
@@ -51,7 +53,7 @@
                     </a>
                 </td>
                 <td class="text-center hover">
-                    <a href="{% url 'markCompleted' todo_item.id %}" class="text-danger">
+                    <a href="{% url 'markCancelled' todo_item.id %}" class="text-danger">
                         <i class="bi bi-x"></i>
                     </a>
                 </td>

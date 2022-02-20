@@ -6,7 +6,7 @@ from django.views.decorators.http import require_POST
 
 # Create your views here.
 def index(request):
-    
+
     todo_items = TodoList.objects.order_by('id')
     input = TodoListForm()
     _len = len(todo_items)
@@ -23,14 +23,21 @@ def addTodoItem(request):
         new_todo.save()
     else:
         print(userText + " Something went wrong")
-    
+
     return redirect('index')
 
 def completedTodo(request, todo_id):
     todo = TodoList.objects.get(pk=todo_id)
     todo.completed = True
+    todo.cancelled = False
     todo.save()
-    
+    return redirect('index')
+
+def cancelTodo(request, todo_id):
+    todo = TodoList.objects.get(pk=todo_id)
+    todo.completed = False
+    todo.cancelled = True
+    todo.save()
     return redirect('index')
 
 def deleteCompleted(request):
@@ -38,6 +45,21 @@ def deleteCompleted(request):
     return redirect('index')
 
 
+def deleteCancelled(request):
+    TodoList.objects.filter(cancelled__exact=True).delete()
+    return redirect('index')
+
+
 def deleteAll(request):
     TodoList.objects.all().delete()
+    return redirect('index')
+
+
+def clearStatus(request):
+    todos = TodoList.objects.all()
+    for todo in todos:
+        todo.completed = False
+        todo.cancelled = False
+        todo.save()
+
     return redirect('index')
